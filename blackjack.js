@@ -1,5 +1,7 @@
 $(function(){
-    function shuffle(o){
+
+  // Global library functions
+  function shuffle(o){
       for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
   };
@@ -30,22 +32,25 @@ $(function(){
 
     // define a deal method for deck object
     // subtracts a card from the deck and returns that card
-    deck.deal = function(hand) {
-      this.numOfCards = this.numOfCards - 1;
-      var dealt = cards.pop();
-      hand.cards.push(dealt);
+    deck.deal = function(hand, times) {
+      this.numOfCards = this.numOfCards - (1 * times);
+      for (var i = 0; i < times; i++) {
+        var dealt = cards.pop();
+        hand.cards.push(dealt);
+      }
     }
 
     return deck;
     // todo: create a card constructor outside this function
   }
 
+  //creates hands
   function makeHand() {
     var hand = {
       cards: new Array()
       }
 
-    // counts the current value of the hand
+    // counts the current value of the hand(incomplete)
     hand.value = function() {
       i = 0;
     }
@@ -58,8 +63,7 @@ $(function(){
     deck = makeDeck();
     deck.shuffle();
     playerHand = makeHand();
-    deck.deal(playerHand);
-    deck.deal(playerHand);
+    deck.deal(playerHand, 2);
     console.log(deck);
     console.log(playerHand);
   }
