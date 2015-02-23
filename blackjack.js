@@ -8,13 +8,13 @@ $(function(){
   // the deck should have a shuffle and a deal function
   function makeDeck() {
     var numOfCards = 52;
-    var values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+    var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     var suits = ['spade', 'club', 'heart', 'dimond'];
     var cards = [];
-    var card = { suit: "", value: "" }
-    for (i = 0; i < values.length; i++) {
+    var card = { suit: "", rank: "" }
+    for (i = 0; i < ranks.length; i++) {
       for (j = 0; j < suits.length; j++) {
-        card = { value: values[i], suit: suits[j] };
+        card = { rank: ranks[i], suit: suits[j] };
         cards.push(card);
       }
     }
@@ -23,29 +23,49 @@ $(function(){
       numOfCards: numOfCards
     }
 
-    //define a shuffle method for deck object
+    // define a shuffle method for deck object
     deck.shuffle = function() {
       this.cards = shuffle(this.cards);
     }
 
-    //define a deal method for deck object
-    deck.deal = function() {
-      return deltCard = cards.pop();
+    // define a deal method for deck object
+    // subtracts a card from the deck and returns that card
+    deck.deal = function(hand) {
+      this.numOfCards = this.numOfCards - 1;
+      var dealt = cards.pop();
+      hand.cards.push(dealt);
     }
 
     return deck;
-    // todo:create a card constructor outside this function
+    // todo: create a card constructor outside this function
+  }
+
+  function makeHand() {
+    var hand = {
+      cards: new Array()
+      }
+
+    // counts the current value of the hand
+    hand.value = function() {
+      i = 0;
+    }
+
+    return hand;
   }
 
 
   function playBlackJack(){
     deck = makeDeck();
     deck.shuffle();
-    deck.deal();
+    playerHand = makeHand();
+    deck.deal(playerHand);
+    deck.deal(playerHand);
     console.log(deck);
+    console.log(playerHand);
   }
 
   playBlackJack();
+
 });
 
 
