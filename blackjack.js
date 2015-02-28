@@ -8,18 +8,43 @@ $(function(){
 
   // create a deck of 52 cards
   // the deck should have a shuffle and a deal function
-  function makeDeck() {
+  function Card(r, s) {
+    var card = {
+      rank: r,
+      suit: s
+    }
+
+    card.getType = function() {
+      if (this.rank == "J" || this.rank == "Q" || this.rank == "K") {
+        type = "Face";
+      }
+      else if (this.rank == "A") {
+        type = "Ace";
+      }
+      else {
+        type = "Number";
+      }
+      return type;
+    }
+
+    card.type = card.getType();
+
+    return card;
+  }
+
+  function Deck() {
     var numOfCards = 52;
     var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
     var suits = ['spade', 'club', 'heart', 'dimond'];
     var cards = [];
-    var card = { suit: "", rank: "" }
     for (i = 0; i < ranks.length; i++) {
       for (j = 0; j < suits.length; j++) {
-        card = { rank: ranks[i], suit: suits[j] };
+        var card = new Card(ranks[i], suits[j])
         cards.push(card);
       }
     }
+
+    //define a deck object initializer
     var deck = {
       cards: cards,
       numOfCards: numOfCards
@@ -45,14 +70,44 @@ $(function(){
   }
 
   //creates hands
-  function makeHand() {
+  function Hand() {
     var hand = {
       cards: new Array()
       }
 
     // counts the current value of the hand(incomplete)
     hand.value = function() {
-      i = 0;
+      var score = 0;
+      var scores = [];
+      var ranks = [];
+
+      for (i = 0; i < this.cards.length; i++) {
+        var rank = ranks[i]
+        if (rank == "J" || rank == "Q" || rank == "K") {
+          score = 10;
+        }
+        else if (rank == "A"){
+          score = 1;
+        }
+        else {
+          score = Math.floor(rank);
+        }
+        scores.push(score)
+      }
+
+      total_score = scores.reduce(function(a, b) {
+        return a + b;
+      });
+    }
+
+    hand.logCards = function(){
+      for(i=0; i< this.cards.length; i++) {
+        console.log(this.cards[i])
+      }
+    }
+
+    hand.card = function(number) {
+      return this.cards[number];
     }
 
     return hand;
@@ -60,12 +115,14 @@ $(function(){
 
 
   function playBlackJack(){
-    deck = makeDeck();
+    deck = new Deck();
     deck.shuffle();
-    playerHand = makeHand();
+    playerHand = new Hand();
     deck.deal(playerHand, 2);
     console.log(deck);
-    console.log(playerHand);
+    playerHand.logCards();
+    console.log(playerHand.card(0));
+
   }
 
   playBlackJack();
