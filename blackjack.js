@@ -1,10 +1,19 @@
 $(function(){
 
   // Global library functions
+  // TODO: make this a method that can only be called on deck
   function shuffle(o){
       for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
       return o;
   };
+
+  function sumArray(array){
+      var total = 0;
+      $.each(array, function(index, value) {
+        total += value;
+      });
+      return total;
+    }
 
   // create a deck of 52 cards
   // the deck should have a shuffle and a deal function
@@ -35,7 +44,7 @@ $(function(){
   function Deck() {
     var numOfCards = 52;
     var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    var suits = ['spade', 'club', 'heart', 'dimond'];
+    var suits = ['Spade', 'Club', 'Heart', 'Dimond'];
     var cards = [];
     for (i = 0; i < ranks.length; i++) {
       for (j = 0; j < suits.length; j++) {
@@ -62,11 +71,11 @@ $(function(){
       for (var i = 0; i < times; i++) {
         var dealt = cards.pop();
         hand.cards.push(dealt);
+        document.write(dealt);
       }
     }
 
     return deck;
-    // todo: create a card constructor outside this function
   }
 
   //creates hands
@@ -74,31 +83,6 @@ $(function(){
     var hand = {
       cards: new Array()
       }
-
-    // counts the current value of the hand(incomplete)
-    hand.value = function() {
-      var score = 0;
-      var scores = [];
-      var ranks = [];
-
-      for (i = 0; i < this.cards.length; i++) {
-        var rank = ranks[i]
-        if (rank == "J" || rank == "Q" || rank == "K") {
-          score = 10;
-        }
-        else if (rank == "A"){
-          score = 1;
-        }
-        else {
-          score = Math.floor(rank);
-        }
-        scores.push(score)
-      }
-
-      total_score = scores.reduce(function(a, b) {
-        return a + b;
-      });
-    }
 
     hand.logCards = function(){
       for(i=0; i< this.cards.length; i++) {
@@ -110,8 +94,29 @@ $(function(){
       return this.cards[number];
     }
 
+
+     // counts the current value of the hand(incomplete)
+    hand.scores = function() {
+      var score = 0;
+      var scores = [];
+      for (i = 0; i < this.cards.length; i++) {
+        type = this.card(i).type
+        if (type === "Face") {
+          score = 10;
+        } else if (type === "Number") {
+          score = Math.floor(this.card(i).rank);
+        } else if (type === "Ace") {
+          score = 1;
+        }
+        scores.push(score);
+      }
+      return scores;
+    }
+
     return hand;
   }
+
+
 
 
   function playBlackJack(){
@@ -121,8 +126,9 @@ $(function(){
     deck.deal(playerHand, 2);
     console.log(deck);
     playerHand.logCards();
-    console.log(playerHand.card(0));
-
+    var playerScores = playerHand.scores();
+    playerScore = sumArray(playerScores);
+    console.log(playerScore);
   }
 
   playBlackJack();
