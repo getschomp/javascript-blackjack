@@ -71,7 +71,7 @@ $(function(){
       for (var i = 0; i < times; i++) {
         var dealt = cards.pop();
         hand.cards.push(dealt);
-        document.write(dealt);
+        document.write("You were dealt " + dealt.rank + " " + dealt.suit + "\n");
       }
     }
 
@@ -96,7 +96,7 @@ $(function(){
 
 
      // counts the current value of the hand(incomplete)
-    hand.scores = function() {
+    hand.score = function() {
       var score = 0;
       var scores = [];
       for (i = 0; i < this.cards.length; i++) {
@@ -106,29 +106,62 @@ $(function(){
         } else if (type === "Number") {
           score = Math.floor(this.card(i).rank);
         } else if (type === "Ace") {
-          score = 1;
+          if (sumArray(scores) + 11 > 21) {
+            score = 1;
+          }
+          else {
+            score = 11;
+          }
         }
         scores.push(score);
+
       }
-      return scores;
+      return sumArray(scores);
     }
 
     return hand;
   }
 
+  function showScore(){
+    document.write("your score is" + playerHand.score())
+  }
 
-
+  function hitOrStand() {
+    var exit = false;
+    var choice = prompt("Do you want to hit or Stand? (H/S) ");
+    while(exit === false) {
+      var score = playerHand.score;
+      debugger;
+      if(score >= 21){
+        exit = true;
+      }
+      else if (choice === "H" && score < 21 ) {
+        deck.deal(playerHand, 1);
+        showScore();
+        var choice = prompt("Do you want to hit or Stand? (H/S) ");
+      }
+      else if (choice === "S" && score < 21 ){
+        document.write("you choose to stand");
+        showScore();
+        exit = true;
+        var choice = prompt("Do you want to hit or Stand? (H/S) ");
+      }
+      else {
+        choice = prompt("Please choose either H or S! " + "Do you want to hit or Stand? (H/S) ");
+      }
+    }
+  }
 
   function playBlackJack(){
     deck = new Deck();
     deck.shuffle();
     playerHand = new Hand();
+    showScore();
+    dealersHand = new Hand();
     deck.deal(playerHand, 2);
+    showScore();
     console.log(deck);
-    playerHand.logCards();
-    var playerScores = playerHand.scores();
-    playerScore = sumArray(playerScores);
-    console.log(playerScore);
+    hitOrStand();
   }
 
   playBlackJack();
