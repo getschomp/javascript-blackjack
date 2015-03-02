@@ -11,52 +11,99 @@
     </script> -->
     <div id="container">
 
-    <h1>Play Blackjack!</h1>
+    <h1 class="title">Play Blackjack!</h1>
 
       <!-- dealer cards -->
-      <row id="dealer-cards">
-        <div class="card">
+      <div id="dealer-row">
+        <div id="cards">
+          <div class="card 1">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 2">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 3">
+           <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 4">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 5">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 6">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
         </div>
-        <div class="card">
+        <div id="hand-info">
+          <h4>Dealer's Hand</h4>
         </div>
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
-        <div class="card">
-        </div>
-      </row>
-
-      <row id="dealer-card-info">
-      </row>
+      </div>
 
       <!-- player cards -->
-      <row id="player-cards">
-        <div class="card 1">
-        </div>
-        <div class="card 2">
-        </div>
-        <div class="card 3">
-        </div>
-        <div class="card 4">
-        </div>
-        <div class="card 5">
-        </div>
-        <div class="card 6">
-        </div>
-      </row>
+      <div id="player-row">
+        <div id="cards">
+          <div class="card 1">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 2">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 3">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 4">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 5">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
+          <div class="card 6">
+            <div class = "svg"></div>
+            <div class = "card-score"></div>
+          </div>
 
+        </div>
+        <div id="hand-info">
+          <h4>Player's Hand</h4>
+        </div>
+      </div>
 
-      <row id="player-card-info">
-      </row>
-
-      <h4>You can either hit or stand.  Choose Wisely.</h4>
-      <button>hit</button>
-      <button>stand</button>
+      <div class="hit-or-stand">
+        <h4>You can either hit or stand.  Choose Wisely.</h4>
+        <button>hit</button>
+        <button>stand</button>
+        <p>the deck has __ cards left.</p>
+        <button>start new game</button>
+      </div>
     </div>
 
 
   </body>
 </html>
+
+<footer>
+  <div id="container">
+    <div id="me">
+      <p>designed and coded by: Allison Browne</p>
+      github: <a href="https://github.com/getschomp">getschomp</a>
+      linkedin: <a href="www.linkedin.com/in/bdivneallison/">browneallison</a>
+      last.fm: <a href = "http://www.last.fm/user/alli0">alli0</a>
+    </div>
+    <div id="credit">
+      <p>cards in .svg format are by Chris Aguilar</p>
+      these open source vectorized cards can be found <a href = "https://code.google.com/p/vectorized-playing-cards/"> here </a>
+    </div>
+
+</footer>

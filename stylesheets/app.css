@@ -195,15 +195,43 @@ picture {
   margin: 0;
   max-width: 100%; }
 
-#dealer-cards {
+.title {
+  background-color: #ececec;
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 0px; }
+
+.hit-or-stand {
+  background-color: #ececec;
+  padding: 0.5em 1em;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+#hand-info {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
-  background-color: #ffa500; }
-  #dealer-cards::after {
+  padding: 1% 2.5%; }
+  #hand-info::after {
     clear: both;
     content: "";
     display: table; }
+
+#dealer-row {
+  background-color: #98CE96; }
+  #dealer-row #hand-info {
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto; }
+    #dealer-row #hand-info::after {
+      clear: both;
+      content: "";
+      display: table; }
+
+#player-row {
+  background-color: #86CE7C; }
 
 div.card {
   float: left;
@@ -211,13 +239,37 @@ div.card {
   margin-right: 2.35765%;
   width: 14.70196%;
   margin-bottom: 20px;
-  height: 200px;
-  background-color: #d3d3d3; }
+  height: 14vw;
+  background-color: #BCED91; }
   div.card:last-child {
     margin-right: 0; }
 
 #container {
-  margin: 0 auto;
-  width: 90%; }
+  margin: 0 auto; }
+
+#cards {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3%; }
+  #cards::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+footer {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em 1em; }
+  footer::after {
+    clear: both;
+    content: "";
+    display: table; }
+  footer #credit {
+    float: right;
+    text-align: right; }
+  footer #me {
+    float: left; }
 
 /*# sourceMappingURL=app.css.map */

@@ -6,23 +6,70 @@ $visual-grid: true;
 $visual-grid-color: red;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.1;
-$light-grey: #d3d3d3;
-$orange: #ffa500;
-$card-height: 200px;
+$light-grey: #ececec;
+$bright-green: #86CE7C;
+$green: #98CE96;
+$green-three: #BCED91;
+$card-height: 14vw;
 
 
-#dealer-cards {
-  @include outer-container;
-  background-color: $orange;
 
+.title {
+  background-color: $light-grey;
+  padding: 0.5em 1em;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom:0px;
 }
-  div.card { @include span-columns(2);
-          margin-bottom: 20px;
-          height: $card-height;
-          background-color: $light-grey;
-          }
+
+.hit-or-stand {
+  background-color: $light-grey;
+  padding: 0.5em 1em;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+  #hand-info{
+    @include outer-container;
+    padding: 1% 2.5%;
+  }
+
+#dealer-row{
+  background-color: $green;
+  #hand-info{
+    @include outer-container;
+  }
+}
+
+#player-row{
+  background-color: $bright-green;
+}
+
+div.card { @include span-columns(2);
+        margin-bottom: 20px;
+        height: $card-height;
+        background-color: $green-three;
+        }
 
 #container{
   margin: 0 auto;
-  width: 90%;
+}
+
+ #cards{
+    @include outer-container;
+    padding-top:3%;
+  }
+
+footer {
+  @include outer-container;
+  padding: 1em 1em;
+
+  #credit {
+    float: right;
+    text-align: right;
+  }
+  #me {
+    float:left;
+  }
 }
