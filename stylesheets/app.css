@@ -195,4 +195,29 @@ picture {
   margin: 0;
   max-width: 100%; }
 
+#dealer-cards {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffa500; }
+  #dealer-cards::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+div.card {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%;
+  margin-bottom: 20px;
+  height: 200px;
+  background-color: #d3d3d3; }
+  div.card:last-child {
+    margin-right: 0; }
+
+#container {
+  margin: 0 auto;
+  width: 90%; }
+
 /*# sourceMappingURL=app.css.map */

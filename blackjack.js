@@ -126,31 +126,31 @@ $(function(){
     document.write("your score is" + playerHand.score())
   }
 
-  function hitOrStand() {
-    var exit = false;
-    var choice = prompt("Do you want to hit or Stand? (H/S) ");
-    while(exit === false) {
-      var score = playerHand.score;
-      debugger;
-      if(score >= 21){
-        exit = true;
-      }
-      else if (choice === "H" && score < 21 ) {
-        deck.deal(playerHand, 1);
-        showScore();
-        var choice = prompt("Do you want to hit or Stand? (H/S) ");
-      }
-      else if (choice === "S" && score < 21 ){
-        document.write("you choose to stand");
-        showScore();
-        exit = true;
-        var choice = prompt("Do you want to hit or Stand? (H/S) ");
-      }
-      else {
-        choice = prompt("Please choose either H or S! " + "Do you want to hit or Stand? (H/S) ");
-      }
-    }
-  }
+  // function hitOrStand() {
+  //   var exit = false;
+  //   var choice = prompt("Do you want to hit or Stand? (H/S) ");
+  //   while(exit === false) {
+  //     var score = playerHand.score;
+  //     debugger;
+  //     if(score >= 21){
+  //       exit = true;
+  //     }
+  //     else if (choice === "H" && score < 21 ) {
+  //       deck.deal(playerHand, 1);
+  //       showScore();
+  //       var choice = prompt("Do you want to hit or Stand? (H/S) ");
+  //     }
+  //     else if (choice === "S" && score < 21 ){
+  //       document.write("you choose to stand");
+  //       showScore();
+  //       exit = true;
+  //       var choice = prompt("Do you want to hit or Stand? (H/S) ");
+  //     }
+  //     else {
+  //       choice = prompt("Please choose either H or S! " + "Do you want to hit or Stand? (H/S) ");
+  //     }
+  //   }
+  // }
 
   function playBlackJack(){
     deck = new Deck();
@@ -161,7 +161,7 @@ $(function(){
     deck.deal(playerHand, 2);
     showScore();
     console.log(deck);
-    hitOrStand();
+    // hitOrStand();
   }
 
   playBlackJack();

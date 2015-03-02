@@ -6,3 +6,23 @@ $visual-grid: true;
 $visual-grid-color: red;
 $visual-grid-index: front;
 $visual-grid-opacity: 0.1;
+$light-grey: #d3d3d3;
+$orange: #ffa500;
+$card-height: 200px;
+
+
+#dealer-cards {
+  @include outer-container;
+  background-color: $orange;
+
+}
+  div.card { @include span-columns(2);
+          margin-bottom: 20px;
+          height: $card-height;
+          background-color: $light-grey;
+          }
+
+#container{
+  margin: 0 auto;
+  width: 90%;
+}
