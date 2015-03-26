@@ -60,7 +60,7 @@ video {
 }
 
 /**
- * Prevent modern browsers from displaying `audio` without controls.
+ * Prevent modern bdivsers from displaying `audio` without controls.
  * Remove excess height in iOS 5 devices.
  */
 
@@ -91,7 +91,7 @@ a {
 }
 
 /**
- * Improve readability when focused and also mouse hovered in all browsers.
+ * Improve readability when focused and also mouse hovered in all bdivsers.
  */
 
 a:active,
@@ -147,7 +147,7 @@ mark {
 }
 
 /**
- * Address inconsistent and variable font size in all browsers.
+ * Address inconsistent and variable font size in all bdivsers.
  */
 
 small {
@@ -155,7 +155,7 @@ small {
 }
 
 /**
- * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ * Prevent `sub` and `sup` affecting `line-height` in all bdivsers.
  */
 
 sub,
@@ -205,7 +205,7 @@ figure {
 }
 
 /**
- * Address differences between Firefox and other browsers.
+ * Address differences between Firefox and other bdivsers.
  */
 
 hr {
@@ -215,7 +215,7 @@ hr {
 }
 
 /**
- * Contain overflow in all browsers.
+ * Contain overflow in all bdivsers.
  */
 
 pre {
@@ -223,7 +223,7 @@ pre {
 }
 
 /**
- * Address odd `em`-unit font size rendering in all browsers.
+ * Address odd `em`-unit font size rendering in all bdivsers.
  */
 
 code,

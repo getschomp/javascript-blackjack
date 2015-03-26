@@ -195,6 +195,11 @@ picture {
   margin: 0;
   max-width: 100%; }
 
+/* general */
+#container {
+  margin: 0 auto; }
+
+/* header */
 .title {
   background-color: #ececec;
   padding: 0.5em 1em;
@@ -202,23 +207,7 @@ picture {
   font-size: 40px;
   margin-bottom: 0px; }
 
-.hit-or-stand {
-  background-color: #ececec;
-  padding: 0.5em 1em;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px; }
-
-#hand-info {
-  max-width: 68em;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1% 2.5%; }
-  #hand-info::after {
-    clear: both;
-    content: "";
-    display: table; }
-
+/* rows */
 #dealer-row {
   background-color: #98CE96; }
   #dealer-row #hand-info {
@@ -233,30 +222,49 @@ picture {
 #player-row {
   background-color: #86CE7C; }
 
+#hand-info {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1% 2.5%; }
+  #hand-info::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+/* cards */
+img {
+  height: 14vw; }
+
 div.card {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 14.70196%;
-  margin-bottom: 20px;
   height: 14vw;
-  background-color: #BCED91; }
+  background-color: #BCED92; }
   div.card:last-child {
     margin-right: 0; }
 
-#container {
-  margin: 0 auto; }
-
-#cards {
+.cards {
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
   padding-top: 3%; }
-  #cards::after {
+  .cards::after {
     clear: both;
     content: "";
     display: table; }
 
+/* controls */
+.hit-or-stand {
+  background-color: #ececec;
+  padding: 0.5em 1em;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+/* footer */
 footer {
   max-width: 68em;
   margin-left: auto;

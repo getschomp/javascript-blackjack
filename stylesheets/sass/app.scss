@@ -9,11 +9,15 @@ $visual-grid-opacity: 0.1;
 $light-grey: #ececec;
 $bright-green: #86CE7C;
 $green: #98CE96;
-$green-three: #BCED91;
+$green-three: #BCED92;
 $card-height: 14vw;
 
+/* general */
+#container{
+  margin: 0 auto;
+}
 
-
+/* header */
 .title {
   background-color: $light-grey;
   padding: 0.5em 1em;
@@ -22,19 +26,7 @@ $card-height: 14vw;
   margin-bottom:0px;
 }
 
-.hit-or-stand {
-  background-color: $light-grey;
-  padding: 0.5em 1em;
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-  #hand-info{
-    @include outer-container;
-    padding: 1% 2.5%;
-  }
-
+/* rows */
 #dealer-row{
   background-color: $green;
   #hand-info{
@@ -46,21 +38,37 @@ $card-height: 14vw;
   background-color: $bright-green;
 }
 
+#hand-info{
+  @include outer-container;
+  padding: 1% 2.5%;
+}
+
+/* cards */
+img{
+  height: $card-height;
+}
+
 div.card { @include span-columns(2);
-        margin-bottom: 20px;
         height: $card-height;
         background-color: $green-three;
         }
 
-#container{
-  margin: 0 auto;
+.cards{
+  @include outer-container;
+  padding-top:3%;
 }
 
- #cards{
-    @include outer-container;
-    padding-top:3%;
-  }
 
+/* controls */
+.hit-or-stand {
+  background-color: $light-grey;
+  padding: 0.5em 1em;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* footer */
 footer {
   @include outer-container;
   padding: 1em 1em;

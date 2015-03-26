@@ -1,3 +1,4 @@
+//execute when document is ready
 $(function(){
 
   // Global library functions
@@ -15,12 +16,13 @@ $(function(){
       return total;
     }
 
-  // create a deck of 52 cards
-  // the deck should have a shuffle and a deal function
   function Card(r, s) {
     var card = {
       rank: r,
-      suit: s
+      suit: s,
+      //the html to pull up an image
+      imgHtml: "<img src=\"assets/cards/" + r + s + ".svg\"></img>",
+      cardScoreHtml: "<p>" + r + s
     }
 
     card.getType = function() {
@@ -41,11 +43,14 @@ $(function(){
     return card;
   }
 
+  // create a deck of 52 cards
+  // the deck should have a shuffle and a deal function
   function Deck() {
     var numOfCards = 52;
     var ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    var suits = ['Spade', 'Club', 'Heart', 'Dimond'];
+    var suits = ['S', 'C', 'H', 'D'];
     var cards = [];
+
     for (i = 0; i < ranks.length; i++) {
       for (j = 0; j < suits.length; j++) {
         var card = new Card(ranks[i], suits[j])
@@ -56,7 +61,7 @@ $(function(){
     //define a deck object initializer
     var deck = {
       cards: cards,
-      numOfCards: numOfCards
+      numOfCards: numOfCards,
     }
 
     // define a shuffle method for deck object
@@ -71,18 +76,22 @@ $(function(){
       for (var i = 0; i < times; i++) {
         var dealt = cards.pop();
         hand.cards.push(dealt);
-        document.write("You were dealt " + dealt.rank + " " + dealt.suit + "\n");
+        debugger;
+        $(".card".concat(hand.cards.length)).append("<p>Appended text</p>");
+        console.log( + ": You were dealt " + dealt.rank + " " + dealt.suit + "\n");
       }
     }
 
     return deck;
   }
 
-  //creates hands
-  function Hand() {
+  // creates hands
+  function Hand(type) {
     var hand = {
-      cards: new Array()
+      cards: new Array(),
       }
+
+    hand.type = type;
 
     hand.logCards = function(){
       for(i=0; i< this.cards.length; i++) {
@@ -94,8 +103,7 @@ $(function(){
       return this.cards[number];
     }
 
-
-     // counts the current value of the hand(incomplete)
+    // TODO: counts the current value of the hand(incomplete)
     hand.score = function() {
       var score = 0;
       var scores = [];
@@ -123,7 +131,7 @@ $(function(){
   }
 
   function showScore(){
-    document.write("your score is" + playerHand.score())
+    return score = "your score is" + playerHand.score();
   }
 
   // function hitOrStand() {
@@ -152,16 +160,32 @@ $(function(){
   //   }
   // }
 
+  function hitOrStand() {
+
+    // listen for hit
+    $( "#hit" ).click(function() {
+      deck.deal(playerHand, 1)
+        setTimeout(function (){
+          deck.deal(dealerHand, 1)
+        }, 5000);
+      //var counter = counter + 1;
+      // $("card".concat(counter)).append("<b>Appended text</b>");
+      alert( "This is what happens when you hit" );
+    });
+    $( "#stand" ).click(function() {
+      alert( "This is what happens when you stand" );
+    });
+  }
+
   function playBlackJack(){
     deck = new Deck();
     deck.shuffle();
-    playerHand = new Hand();
+    playerHand = new Hand("player");
     showScore();
-    dealersHand = new Hand();
+    dealersHand = new Hand("dealer");
     deck.deal(playerHand, 2);
     showScore();
-    console.log(deck);
-    // hitOrStand();
+    hitOrStand();
   }
 
   playBlackJack();
